@@ -1,0 +1,30 @@
+{
+  "name": "tenistsnnode",
+  "version": "1.0.0",
+  "description": "Views for TSN Model",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/loaizajimmy/TenisTSN.git"
+  },
+  "keywords": [
+    "JavaScript"
+  ],
+  "author": "Sebas - Mateo - Jimmy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/loaizajimmy/TenisTSN/issues"
+  },
+  "homepage": "https://github.com/loaizajimmy/TenisTSN#readme",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.4",
+    "method-override": "^2.3.9",
+    "pug": "^2.0.0-rc.3",
+    "request": "^2.81.0",
+    "serve-favicon": "^2.4.3"
+  }
+}

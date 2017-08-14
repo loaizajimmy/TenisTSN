@@ -1,0 +1,35 @@
+html
+    head
+        meta(charset='utf-8')
+
+        if (title !== undefined)
+            title #{title} - TSN
+        else
+            title TSN
+
+        //Styles
+        include styles
+
+    body(class='admin')
+        div(class='pusher')
+            div(class='full height')
+                div(class='toc')
+                    include sidebar
+
+                div(class='article')
+                    div(class='navbarmenu')
+                        include topbar
+
+                    div(class='containerli')
+                        block content
+
+                    div(class='footer')
+                        | Build With
+                        i(class='heart icon red')
+                        |  Semantic-Ui
+
+        //scripts
+        include scripts
+
+        block temp-scripts
+

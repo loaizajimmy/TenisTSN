@@ -1,0 +1,40 @@
+div(class='ui fixed top menu no-border no-radius borderless navmenu')
+    a(class='item active no-padding logo', style='width: 100px;', href='/')
+        img(class='ui image logoImg', src='/img/logo.png', style='display: block !important;')
+
+    a(class='item hamburger', data-name='show')
+        i(class='align justify icon')
+    div(class='right menu')
+        div(class='ui right aligned category search item')
+            div(class='ui transparent icon input')
+                input(class='prompt', type='text', placeholder='Buscar Tenis...')
+                i(class='search link icon')
+
+            div(class='results')
+
+
+        div(class='ui dropdown item', tabindex='0')
+            | Language
+            i(class='dropdown icon', tabindex='0')
+                div(class='menu', tabindex='-1')
+            div(class='menu transition hidden', tabindex='-1')
+                a(class='item')
+                    i(class='united kingdom flag')
+                    | English
+                a(class='item')
+                    i(class='turkey flag')
+                    | Turkish
+                a(class='item')
+                    i(class='spain flag')
+                    | Spanish
+
+        div(class='ui dropdown item', tabindex='0')
+            img(class='ui mini circular image', src='/img/avatar/people/Enid.png')
+            div(class='menu transition hidden', tabindex='-1')
+                a(class='item', href='#') Inbox
+                a(class='item', href='#') Profile
+                a(class='item', href='#') Settings
+                div(class='ui divider')
+                a(class='item') Need Help?
+                a(class='item', href='#') Sign Out
+

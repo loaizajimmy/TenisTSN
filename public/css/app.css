@@ -1,0 +1,21 @@
+/*Tag*/
+body {
+    background: slategray;
+}
+
+/*ID*/
+
+/*Class*/
+.sidemenu {
+    top: 61px !important;
+}
+
+.statistic .value i {
+    padding-right: .2em;
+    padding-bottom: 1.1em;
+}
+
+.see-all {
+    padding-left: .5em;
+}
+

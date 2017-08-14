@@ -1,0 +1,71 @@
+extends shared/layout
+
+block content
+    div(class='ui equal width left aligned padded grid stackable')
+        //Aca estan los cuadritos bonitos
+        //Referencias de Tenis
+        div(class='eight wide mobile eight wide tablet four wide computer column')
+            div(class='ui horizontal segments')
+                div(class='ui inverted teal segment center aligned')
+                    div(class='ui inverted statistic')
+                        div(class='value')
+                            i(class='small Yelp icon')
+                            | 99
+                        div(class='label')
+                            | Referencias de Tenis
+                            a(class='see-all', href='#')
+                                i(class='circular inverted Mail Forward icon')
+
+
+
+
+        //pedidos pendientes
+        div(class='sixteen wide mobile eight wide tablet four wide computer column')
+            div(class='ui horizontal segments')
+                div(class='ui inverted red segment center aligned')
+                    div(class='ui inverted statistic')
+                        div(class='value')
+                            i(class='small talk icon')
+                            | 5
+                        div(class='label')
+                            | Pedidos pendientes
+                            a(class='see-all', href='#')
+                                i(class='circular inverted Mail Forward icon')
+
+        //Tenis sin regresar
+        div(class='eight wide mobile eight wide tablet four wide computer column')
+            div(class='ui horizontal segments')
+                div(class='ui inverted green segment center aligned')
+                    div(class='ui inverted statistic')
+                        div(class='value')
+                            i(class='small Retweet icon')
+                            | 19
+                        div(class='label')
+                            | Tenis sin regresar
+                            a(class='see-all', href='#')
+                                i(class='circular inverted Mail Forward icon')
+
+
+
+        //Tenis sin cantidad
+        div(class='eight wide mobile eight wide tablet four wide computer column')
+            div(class='ui horizontal segments')
+                div(class='ui inverted green segment center aligned')
+                    div(class='ui inverted statistic')
+                        div(class='value')
+                            i(class='small help circle icon')
+                            | 6
+                        div(class='label')
+                            | Tenis sin cantidad
+                            a(class='see-all', href='#')
+                                i(class='circular inverted Mail Forward icon')
+
+
+
+
+
+
+    .footer
+        | Build With
+        i.heart.icon.red
+        |  Semantic-Ui
