@@ -10,6 +10,7 @@ module.exports = {
 
     createPOST: function (req, res) {
         console.log(req.body);
+
         request({
             url: `${config.host}:${config.port}/api/Tenis`,
             method: 'POST',
@@ -23,7 +24,8 @@ module.exports = {
         }, function (err, httpResponse, body) {
             if (err)
                 console.log(err.toString());
-            res.json(JSON.parse(body));
+
+            res.redirect('/referencias/create/' + body.tenisID);
         });
     }
 };

@@ -4,6 +4,9 @@ body {
 }
 
 /*ID*/
+#divDrag {
+    display: none;
+}
 
 /*Class*/
 .sidemenu {

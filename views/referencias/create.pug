@@ -1,0 +1,294 @@
+extends ../shared/layout
+
+block content
+    div(class='ui center aligned inverted segment')
+        h3(class="ui blue inverted header") Agrega nuevos tenis!
+
+    div(class='ui equal width left aligned padded grid stackable')
+        div(class='two wide column')
+            div(class='ui vertical secondary pointing inverted fluid tabular menu')
+                a(class='item', data-tab='tenis')
+                    | Tenis
+                a(class='item active', data-tab='referencias')
+                    | Referencias
+
+        div(class='fourteen wide stretched column')
+            div(class='ui segment')
+                div(class='ui tab', data-tab='tenis')
+                    form(class='ui form segment form1', action='/tenis/edit/' + tenisID, method='POST')
+                        div(class='two fields')
+                            div(class='field')
+                                label Bodega
+                                div(class='ui selection dropdown')
+                                    input(type='hidden', name='bodega', value=bodega.bodegaID)
+                                    div(class='default text') Bodega
+                                    i(class='dropdown icon')
+                                    div(class='menu')
+                                        div(class='item', data-value='1')
+                                            div(class='ui red empty circular label')
+                                            | Olimpica
+                                        div(class='item', data-value='2')
+                                            div(class='ui teal empty circular label')
+                                            | Cra 19
+                                        div(class='item', data-value='3')
+                                            div(class='ui black empty circular label')
+                                            | Cra 20
+                                        div(class='item', data-value='4')
+                                            div(class='ui green empty circular label')
+                                            | Los Petetes
+
+
+                            div(class='field')
+                                label Estante
+                                div(class='ui selection dropdown')
+                                    input(type='hidden', name='estante', value=estanteID)
+                                    div(class='default text') Estante
+                                    i(class='dropdown icon')
+                                    div(class='menu')
+                                        div(class='item', data-value='1')
+                                            div(class='ui red empty circular label')
+                                            | Número 1
+                                        div(class='item', data-value='2')
+                                            div(class='ui teal empty circular label')
+                                            | Número 2
+
+
+
+
+                        div(class='three fields')
+                            div(class='field')
+                                label Estilo
+                                div(class='ui selection dropdown')
+                                    input(type='hidden', name='estilo', value=estilo)
+                                    div(class='default text') Estilo
+                                    i(class='dropdown icon')
+                                    div(class='menu')
+                                        div(class='item', data-value='Zapatilla')
+                                            div(class='ui red empty circular label')
+                                            | Zapatilla
+                                        div(class='item', data-value='Bota')
+                                            div(class='ui teal empty circular label')
+                                            | Bota
+
+
+                            div(class='field')
+                                label Genero
+                                div(class='ui selection dropdown')
+                                    input(type='hidden', name='genero', value=genero)
+                                    div(class='default text') Genero
+                                    i(class='dropdown icon')
+                                    div(class='menu')
+                                        div(class='item', data-value='femenino')
+                                            i(class='large pink female icon')
+                                            | Femenino
+                                        div(class='item', data-value='masculino')
+                                            i(class='large blue male icon')
+                                            | Masuculino
+                                        div(class='item', data-value='unisex')
+                                            i(class='large grey intergender icon')
+                                            | Unisex
+
+
+                            div(class='field')
+                                label Marca
+                                div(class='ui selection dropdown')
+                                    input(type='hidden', name='marca' value=marca)
+                                    div(class='default text') Marca
+                                    i(class='dropdown icon')
+                                    div(class='scrolling menu')
+                                        div(class='item', data-value='0')
+                                            div(class='ui red empty circular label')
+                                            | Reebok
+                                        div(class='item', data-value='1')
+                                            div(class='ui teal empty circular label')
+                                            | Adidas
+                                        div(class='item', data-value='2')
+                                            div(class='ui green empty circular label')
+                                            | Nike
+                                        div(class='item', data-value='3')
+                                            div(class='ui blue empty circular label')
+                                            | Diesel
+                                        div(class='item', data-value='4')
+                                            div(class='ui black empty circular label')
+                                            | Convers
+                                        div(class='item', data-value='5')
+                                            div(class='ui purple empty circular label')
+                                            | Puma
+                                        div(class='item', data-value='6')
+                                            div(class='ui yellow empty circular label')
+                                            | New Balance
+                                        div(class='item', data-value='7')
+                                            div(class='ui pink empty circular label')
+                                            | Scketcher
+                                        div(class='item', data-value='8')
+                                            div(class='ui orange empty circular label')
+                                            | Jordan
+
+
+
+                        h1 estoy aca perrrita
+                        div(class='field')
+
+                            label Meses de garantia
+                            div(id='radios')
+                                input#option1(name='garantia', type='radio', value='1')
+                                label(for='option1')  1 mes
+                                input#option2(name='garantia', type='radio', value='2', checked='')
+                                label(for='option2') 2 meses
+                                input#option3(name='garantia', type='radio', value='3')
+                                label(for='option3') 3 meses
+
+
+                        div(class='ui buttons')
+                            button(class='ui green submit button') Modificar
+
+
+
+
+                div(class='ui tab active', data-tab='referencias')
+                    form(class='ui form center aligned segment form2', id='theForm')
+                        h3(class='ui header')
+                            | Añadir nuevas referencias
+                        div(class='ui hidden divider')
+                        div(class='ui grid')
+                            div(class='three wide column')
+                                div(class='field')
+                                    label Talla
+                                    div(class='ui compact selection dropdown')
+                                        input(type='hidden', name='talla')
+                                        div(class='default text') Talla
+                                        i(class='dropdown icon')
+                                        div(class='menu')
+                                            - var n = 34;
+                                            while n < 42
+                                                div(class='item', data-value='' + n++)
+                                                    | #{n}
+
+
+                            div(class='four wide column')
+                                div(class='field')
+                                    label Color
+                                    div(class='ui floating dropdown labeled icon button')
+                                        i(class='paint brush icon')
+                                        span(class='text') Colores
+                                        input(type='hidden' name='color')
+                                        div(class='menu')
+                                            .ui.search.icon.input
+                                                i.search.icon
+                                                input(name='search', placeholder='Busca el color')
+                                            .divider
+                                            .header
+                                                i.tags.icon
+                                                | Filter by tag
+                                            div(class="scrolling menu")
+                                                div(class='item')
+                                                    div(class='ui red empty circular label')
+                                                    | Rojo
+                                                div(class='item')
+                                                    div(class='ui yellow empty circular label')
+                                                    | Amarillo
+                                                div(class='item')
+                                                    div(class='ui blue empty circular label')
+                                                    | Azul
+                                                div(class='item')
+                                                    div(class='ui green empty circular label')
+                                                    | Verde
+                                                div(class='item')
+                                                    div(class='ui black empty circular label')
+                                                    | Negro
+                                                div(class='item')
+                                                    div(class='ui orange empty circular label')
+                                                    | Naranja
+                                                div(class='item')
+                                                    div(class='ui pink empty circular label')
+                                                    | Rosado
+                                                div(class='item')
+                                                    div(class='ui brown empty circular label')
+                                                    | Café
+                                                div(class='item')
+                                                    div(class='ui grey empty circular label')
+                                                    | Gris
+                                                div(class='item')
+                                                    div(class='ui white empty circular label')
+                                                    | Blanco
+
+                            div(class='three wide column')
+                                div(class='field')
+                                    label(for='cantidad') Cantidad
+                                    input(type='number', placeholder='Cantidad', id='cantidad', name='cantidad')
+
+                            div(class='two wide column')
+                                div(class='field')
+                                    label Fotos
+                                    .ui.black.animated.button(id='btnAddImages' tabindex='0')
+                                        .visible.content
+                                            i.large.circle.plus.icon
+                                        .hidden.content
+                                            | Agregar
+                            div(class='two wide column')
+                                div(class='field')
+                                    label Guardar
+                                    .ui.green.animated.button(tabindex='0', id='btnGuardar')
+                                        .visible.content
+                                            i.large.right.arrow.icon
+                                        .hidden.content
+                                            | Agregar
+                            div(class='two wide column')
+                                div(class='field')
+                                    label Cancelar
+                                    .ui.green.animated.reset.button(tabindex='0')
+                                        .visible.content
+                                            i.large.ban.icon
+                                        .hidden.content
+                                            | Cancelar
+
+                    div(class='row')
+                        div(class='ten wide column')
+                            div(id='divDrag' class='hidden')
+                                button(type='submit' id='perra')
+                                form#my-dropzone.dropzone(action='/referencias/images', method='POST', enctype='multipart/form-data')
+
+
+
+
+
+
+
+
+
+block temp-scripts
+    script.
+        Dropzone.options.myDropzone = {
+            // Prevents Dropzone from uploading dropped files immediately
+            maxFileSize: 4,
+            parallelUploads: 10,
+            uploadMultiple: true,
+            autoProcessQueue: false,
+            addRemoveLinks: true,
+
+            init: function () {
+                var submitButton = document.querySelector("#perra")
+                myDropzone = this; // closure
+
+                submitButton.addEventListener("click", function (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    myDropzone.processQueue(); // Tell Dropzone to process all queued files.
+                });
+                // You might want to show the submit button only when
+                // files are dropped here:
+                this.on("addedfile", function (file) {
+
+                });
+            }
+        };
+
+    script(src='/js/validation.js')
+
+    //adress
+    script(src='/plugins/adress/jquery.address.js')
+
+
+    //radio slider
+    script(src='/plugins/radioslider/jquery.radios-to-slider.js')
+    script(src='/js/tenisScript.js')

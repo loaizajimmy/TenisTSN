@@ -41,6 +41,7 @@ $(function () {
             }
         }
     });
+
     $('.ui.form2').form({
         inline: true,
         on: 'submit',
@@ -67,5 +68,9 @@ $(function () {
                 }]
             }
         }
+    });
+
+    $('#btnGuardar').on('click', function () {
+        $('#theForm').submit();
     });
 });
