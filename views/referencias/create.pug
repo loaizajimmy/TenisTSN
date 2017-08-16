@@ -146,7 +146,7 @@ block content
 
 
                 div(class='ui tab active', data-tab='referencias')
-                    form(class='ui form center aligned segment form2', id='theForm')
+                    form(class='ui form center aligned segment form2', action='javascript:void(0);', method='POST')
                         h3(class='ui header')
                             | Añadir nuevas referencias
                         div(class='ui hidden divider')
@@ -181,34 +181,34 @@ block content
                                                 i.tags.icon
                                                 | Filter by tag
                                             div(class="scrolling menu")
-                                                div(class='item')
+                                                div(class='item' data-value='Rojo' )
                                                     div(class='ui red empty circular label')
                                                     | Rojo
-                                                div(class='item')
+                                                div(class='item' data-value='Amarillo')
                                                     div(class='ui yellow empty circular label')
                                                     | Amarillo
-                                                div(class='item')
+                                                div(class='item' data-value='Azul')
                                                     div(class='ui blue empty circular label')
                                                     | Azul
-                                                div(class='item')
+                                                div(class='item' data-value='Verde')
                                                     div(class='ui green empty circular label')
                                                     | Verde
-                                                div(class='item')
+                                                div(class='item' data-value='Negro')
                                                     div(class='ui black empty circular label')
                                                     | Negro
-                                                div(class='item')
+                                                div(class='item' data-value='Naranja')
                                                     div(class='ui orange empty circular label')
                                                     | Naranja
-                                                div(class='item')
+                                                div(class='item' data-value='Rosado')
                                                     div(class='ui pink empty circular label')
                                                     | Rosado
-                                                div(class='item')
+                                                div(class='item' data-value='Cafe')
                                                     div(class='ui brown empty circular label')
-                                                    | Café
-                                                div(class='item')
+                                                    | Cafe
+                                                div(class='item' data-value='Gris')
                                                     div(class='ui grey empty circular label')
                                                     | Gris
-                                                div(class='item')
+                                                div(class='item' data-value='Blanco')
                                                     div(class='ui white empty circular label')
                                                     | Blanco
 
@@ -228,7 +228,7 @@ block content
                             div(class='two wide column')
                                 div(class='field')
                                     label Guardar
-                                    .ui.green.animated.button(tabindex='0', id='btnGuardar')
+                                    .ui.green.animated.submit.button(tabindex='0', id='btnGuardar')
                                         .visible.content
                                             i.large.right.arrow.icon
                                         .hidden.content
@@ -246,15 +246,28 @@ block content
                         div(class='ten wide column')
                             div(id='divDrag' class='hidden')
                                 button(type='submit' id='perra')
-                                form#my-dropzone.dropzone(action='/referencias/images', method='POST', enctype='multipart/form-data')
+                                form#my-dropzone.dropzone(action='/referencias/create/' + tenisID, method='POST', enctype='multipart/form-data')
 
-
-
-
-
-
-
-
+                    div(class='row')
+                        div(class='ten wide column')
+                            table.ui.red.table
+                                thead
+                                    tr
+                                        th Talla
+                                        th Color
+                                        th Cantidad
+                                        th Opciones
+                                tbody
+                                    each val, index in  referencias
+                                        tr
+                                            td #{val.talla}
+                                            td #{val.color}
+                                            td #{val.cantidad}
+                                            td
+                                                a(class='ui button basic icon' href='#' data-tooltip='Modificar' data-position='top center' data-inverted='')
+                                                    i(class='edit large blue icon')
+                                                a(class='ui button basic icon' href='#' data-tooltip='Eliminar' data-position='top center' data-inverted='')
+                                                    i(class='trash large red icon')
 
 block temp-scripts
     script.
@@ -273,15 +286,24 @@ block temp-scripts
                 submitButton.addEventListener("click", function (e) {
                     e.preventDefault();
                     e.stopPropagation();
-                    myDropzone.processQueue(); // Tell Dropzone to process all queued files.
+                    if (myDropzone.getQueuedFiles().length === 0) {
+                        console.log('Entro por submit');
+                        $("#my-dropzone").submit();
+                    }
+                    else {
+                        console.log('Entro por cola');
+                        myDropzone.processQueue(); // Tell Dropzone to process all queued files.
+
+                    }
                 });
                 // You might want to show the submit button only when
                 // files are dropped here:
-                this.on("addedfile", function (file) {
-
+                this.on("complete", function () {
+                    location.reload();
                 });
             }
         };
+
 
     script(src='/js/validation.js')
 

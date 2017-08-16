@@ -7,6 +7,5 @@ router.route('/create/:tenisID')
     .get(referenciasController.createGET)
     .post(referenciasController.createPOST);
 
-router.post('/images', referenciasController.uploadImages);
 
 module.exports = router;

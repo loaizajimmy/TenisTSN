@@ -15,8 +15,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 //Body parser
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: false}));
+//app.use(bodyParser.json());
+//app.use(bodyParser.urlencoded({extended: false}));
 
 //Method Override
 app.use(methodOverride("_method"));

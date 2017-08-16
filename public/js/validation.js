@@ -67,10 +67,28 @@ $(function () {
                     prompt: 'Por favor seleccione una cantidad'
                 }]
             }
+        },
+        onSuccess: function () {
+            addParameters();
         }
     });
 
-    $('#btnGuardar').on('click', function () {
-        $('#theForm').submit();
-    });
 });
+
+function addParameters() {
+    const talla = $('input[name="talla"]').val();
+    const color = $('input[name="color"]').val();
+    const cantidad = $('input[name="cantidad"]').val();
+
+    console.log(talla, color, cantidad);
+
+    let html = `<input type="hidden" name="talla" value="${talla}">`;
+    html += `<input type="hidden" name="color" value="${color}">`;
+    html += `<input type="hidden" name="cantidad" value="${cantidad}">`;
+
+    $('#my-dropzone').append(html);
+
+    $('#perra').click();
+
+    console.log(html);
+}

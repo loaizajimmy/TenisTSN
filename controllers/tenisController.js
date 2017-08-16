@@ -9,23 +9,23 @@ module.exports = {
     },
 
     createPOST: function (req, res) {
-        console.log(req.body);
+        console.log(req.fields);
 
         request({
             url: `${config.host}:${config.port}/api/Tenis`,
             method: 'POST',
             form: {
-                estanteID: req.body.estante,
-                estilo: req.body.estilo,
-                marca: req.body.marca,
-                genero: req.body.genero,
-                tiempoGarantia: req.body.garantia
+                estanteID: req.fields.estante,
+                estilo: req.fields.estilo,
+                marca: req.fields.marca,
+                genero: req.fields.genero,
+                tiempoGarantia: req.fields.garantia
             }
         }, function (err, httpResponse, body) {
             if (err)
                 console.log(err.toString());
 
-            res.redirect('/referencias/create/' + body.tenisID);
+            res.redirect('/referencias/create/' + JSON.parse(body).tenisID);
         });
     }
 };
