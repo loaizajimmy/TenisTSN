@@ -11,9 +11,7 @@ module.exports = {
         }, function (err, httpResponse, body) {
             if (err)
                 console.log(err.toString());
-            console.log(body);
             let response = JSON.parse(body);
-            console.log(response);
             let data = {
                 tenisID: id,
                 estilo: response.estilo,
@@ -23,20 +21,12 @@ module.exports = {
                 bodega: response.estante.bodega,
                 referencias: response.referencias
             };
-
-            console.log('Voy a enviar esto');
-            console.log(data);
-
             res.render('referencias/create', data);
         });
     },
 
     createPOST: function (req, res) {
         let id = req.params.tenisID;
-        console.log('llegue esto');
-        console.log(req.fields);
-        console.log(req.files);
-
         request({
             url: `${config.host}:${config.port}/api/ReferenciaTenis`,
             method: 'POST',
@@ -52,19 +42,80 @@ module.exports = {
 
             uploadImages(req, res, JSON.parse(body).ReferenciaTenisID, id);
         });
+    },
+
+    detailsGET: function (req, res) {
+        let referenciaID = req.params.referenciaID;
+        request({
+            url: `${config.host}:${config.port}/api/ReferenciaTenis/${referenciaID}`,
+            method: 'GET'
+        }, function (err, httpResponse, body) {
+            let data = {
+                title: "Ref Detalles",
+                referencia: JSON.parse(body)
+            };
+            res.render('referencias/details', data);
+        });
+    },
+
+    updateGET: function (req, res) {
+        let referenciaID = req.params.referenciaID;
+        request({
+            url: `${config.host}:${config.port}/api/ReferenciaTenis/${referenciaID}`,
+            method: 'GET'
+        }, function (err, httpResponse, body) {
+            let data = {
+                title: "Ref Edit",
+                referencia: JSON.parse(body)
+            };
+            res.render('referencias/edit', data);
+        });
+    },
+
+    updatePUT: function (req, res) {
+        let referenciaID = req.params.referenciaID;
+        console.log(referenciaID);
+        console.log(req.fields);
+        request({
+            url: `${config.host}:${config.port}/api/ReferenciaTenis/${referenciaID}`,
+            method: 'PUT',
+            form: {
+                ReferenciaTenisID: referenciaID,
+                tenisID: req.fields.tenisID,
+                talla: req.fields.talla,
+                color: req.fields.color,
+                cantidad: req.fields.cantidad
+            }
+        }, function (err, httpResponse, body) {
+            if (err)
+                console.log(err);
+            console.log(body);
+            res.redirect('/referencias/details/' + referenciaID);
+        });
+
+    },
+
+    deleteDELETE: function (req, res) {
+        let referenciaID = req.params.referenciaID;
+        request({
+            url: `${config.host}:${config.port}/api/ReferenciaTenis/${referenciaID}`,
+            method: 'DELETE'
+        }, function (err, httpResponse, body) {
+            if (err)
+                console.log(err);
+            res.redirect('/');
+        });
     }
 };
 
 
 function uploadImages(req, res, id, tenisID) {
-    console.log('llego el archivo');
-    console.log(req.files.length);
     let cont = 0;
     for (let files in req.files) {
         let file = req.files[files];
         console.log(file.name);
         const extension = file.name.split(".").pop();
-        mv(file.path, "public/images/" + id + `-${cont}.` + extension,
+        mv(file.path, `public/images/${id}_${cont}.${extension}`,
             function (err) {
                 if (err) {
                     console.log(err);

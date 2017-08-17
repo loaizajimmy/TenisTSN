@@ -1,0 +1,94 @@
+extends ../shared/layout
+
+block content
+    .row
+        .sixteen.wide.column
+            .no-background
+                .ui.center.aligned.segment
+                    .ui.grid
+                        .three.wide.column
+                            div.logo-image.top-space
+                                img(class='ui small image' src='/img/marcas/' + referencia.tenis.marca + ".png")
+
+                        .ten.wide.column.reference-fields
+                            h5.ui.header
+                                | Detalles Referencia
+
+                            .ui.horizontal.list
+                                .item
+                                    if(referencia.tenis.genero.toUpperCase() === "MASCULINO")
+                                        i(class='male large blue icon')
+                                    else if(referencia.tenis.genero.toUpperCase() === "FEMENINO")
+                                        i(class='female large pink icon')
+                                    else
+                                        i(class='intergender large pink icon')
+                                    .content
+                                        .header Genero
+                                        |       #{referencia.tenis.genero.toUpperCase()}
+                                .item
+                                    img(class='ui avatar image' src='/img/marcas/' + referencia.tenis.marca + ".png")
+                                    .content
+                                        .header Marca
+                                        p#marca #{referencia.tenis.marca}
+                                .item
+                                    i(class='paint brush large icon')
+                                    .content
+                                        .header Color
+                                        |       #{referencia.color}
+
+                            .ui.divider
+
+
+
+
+                    .ui.grid
+                        .eleven.wide.right.aligned.column.reference-fields
+                            .column
+                                .ui.horizontal.list
+                                    .item
+                                        .content
+                                            .header Estilo
+                                            |       #{referencia.tenis.estilo}
+                                    .item
+                                        .content
+                                            .header Tiempo de Garantia
+                                            |       #{referencia.tenis.tiempoGarantia} meses
+                                    .item
+                                        .content
+                                            .header Talla
+                                            |       #{referencia.talla}
+                                    .item
+                                        .content
+                                            .header Cantidad
+                                            |       #{referencia.cantidad}
+
+
+                        .two.wide.right.floated.column
+                            a(href='/referencias/update/' + referencia.ReferenciaTenisID class="rigth-space") Editar
+                            a(href='#' id='btnEliminar' class="rigth-space" data-type="error") Eliminar
+
+                            form(id="formBorrar", action='/referencias/delete/'+ referencia.ReferenciaTenisID + "?_method=DELETE", method='POST')
+
+
+    .row
+        .ui.special.cards
+            each foto in referencia.fotos
+                .card
+                    .blurring.dimmable.image#fotos-referencias
+                        .ui.dimmer
+                            .content
+                                .center
+                                    .ui.red.inverted.button Eliminar
+                        img(src="" + foto.ruta alt="" title="")
+
+
+
+block temp-scripts
+    script(src="/plugins/gridalicius/jquery.grid-a-licious.min.js")
+    script(src="/plugins/fluidbox/dist/js/jquery.fluidbox.min.js")
+    script(src="/plugins/golgi/elements/custom-gallery.js")
+    script(src="/plugins/sweetalert/sweetalert.min.js")
+    script(src="/plugins/golgi/elements/custom-alert.js")
+    script(src="/js/referenciasScript.js")
+
+

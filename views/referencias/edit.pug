@@ -1,0 +1,84 @@
+extends ../shared/layout
+
+block content
+    .ui.center.aligned.stackeable.grid
+        .ten.wide.column
+            form(class='ui form center aligned segment form2', action='/referencias/update/' + referencia.ReferenciaTenisID + '?_method=PUT', method='POST')
+                h3(class='ui header')
+                    | Actualiza esta referencia
+                h5(class='ui header')
+                    | Cambia solo lo que consideres necesario
+
+                div(class='ui hidden divider')
+                input(type='hidden', name="tenisID", value=referencia.tenisID)
+                div(class='field')
+                    label Talla
+                    div(class='ui compact selection dropdown')
+                        input(type='hidden', name='talla', value=referencia.talla)
+                        div(class='default text') Talla
+                        i(class='dropdown icon')
+                        div(class='menu')
+                            - var n = 34;
+                            while n < 43
+                                div(class='item', data-value='' + n)
+                                    | #{n++}
+
+                div(class='field')
+                    label Color
+                    div(class='ui floating dropdown labeled icon button')
+                        i(class='paint brush icon')
+                        span(class='text') Colores
+                        input(type='hidden' name='color', value=referencia.color)
+                        div(class='menu')
+                            .ui.search.icon.input
+                                i.search.icon
+                                input(name='search', placeholder='Busca el color')
+                            .divider
+                            .header
+                                i.tags.icon
+                                | Filter by tag
+                            div(class="scrolling menu")
+                                div(class='item' data-value='Rojo' )
+                                    div(class='ui red empty circular label')
+                                    | Rojo
+                                div(class='item' data-value='Amarillo')
+                                    div(class='ui yellow empty circular label')
+                                    | Amarillo
+                                div(class='item' data-value='Azul')
+                                    div(class='ui blue empty circular label')
+                                    | Azul
+                                div(class='item' data-value='Verde')
+                                    div(class='ui green empty circular label')
+                                    | Verde
+                                div(class='item' data-value='Negro')
+                                    div(class='ui black empty circular label')
+                                    | Negro
+                                div(class='item' data-value='Naranja')
+                                    div(class='ui orange empty circular label')
+                                    | Naranja
+                                div(class='item' data-value='Rosado')
+                                    div(class='ui pink empty circular label')
+                                    | Rosado
+                                div(class='item' data-value='Cafe')
+                                    div(class='ui brown empty circular label')
+                                    | Cafe
+                                div(class='item' data-value='Gris')
+                                    div(class='ui grey empty circular label')
+                                    | Gris
+                                div(class='item' data-value='Blanco')
+                                    div(class='ui white empty circular label')
+                                    | Blanco
+
+
+                div(class='field')
+                    label(for='cantidad') Cantidad
+                    input(type='number', placeholder='Cantidad', id='cantidad', name='cantidad', value=referencia.cantidad)
+
+
+
+
+
+                div(class='options')
+                    button.ui.inverted.green.button Guardar
+                    a.ui.inverted.red.button(href='/referencias/details/' + referencia.ReferenciaTenisID) Cancelar
+

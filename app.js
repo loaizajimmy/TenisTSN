@@ -4,6 +4,7 @@ const path = require('path');
 let methodOverride = require("method-override");
 let favicon = require('serve-favicon');
 let formidable = require('express-formidable');
+require('events').EventEmitter.prototype._maxListeners = 100;
 
 const port = process.env.PORT || 3434;
 

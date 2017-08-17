@@ -160,9 +160,9 @@ block content
                                         i(class='dropdown icon')
                                         div(class='menu')
                                             - var n = 34;
-                                            while n < 42
-                                                div(class='item', data-value='' + n++)
-                                                    | #{n}
+                                            while n < 43
+                                                div(class='item', data-value='' + n)
+                                                    | #{n++}
 
 
                             div(class='four wide column')
@@ -250,7 +250,7 @@ block content
 
                     div(class='row')
                         div(class='ten wide column')
-                            table.ui.red.table
+                            table(class='ui celled sortable red selectable striped table')
                                 thead
                                     tr
                                         th Talla
@@ -264,6 +264,8 @@ block content
                                             td #{val.color}
                                             td #{val.cantidad}
                                             td
+                                                a(class='ui button basic icon' href='/referencias/details/' + val.ReferenciaTenisID data-tooltip='Detalles' data-position='top center' data-inverted='')
+                                                    i(class='unhide large green icon')
                                                 a(class='ui button basic icon' href='#' data-tooltip='Modificar' data-position='top center' data-inverted='')
                                                     i(class='edit large blue icon')
                                                 a(class='ui button basic icon' href='#' data-tooltip='Eliminar' data-position='top center' data-inverted='')
