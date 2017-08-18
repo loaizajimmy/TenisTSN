@@ -1,0 +1,39 @@
+extends ../shared/layout
+
+block content
+
+    .ui.grid
+        .sixteen.wide.column
+            div(class='ui center aligned inverted segment')
+                h3(class="ui blue inverted header") Tenis en bodegas!
+        .two.wide.center.aligned.column
+            a(href='/tenis/create' data-tooltip="Agregar Tenis" data-position='top center' data-inverted='')
+                i(class='circular large inverted blue plus icon')
+
+    .ui.divider
+    .ui.container
+        .ui.four.cards
+            each tenis in listaTenis
+                .card
+                    .content
+                        img.right.floated.tiny.ui.image(src='/img/marcas/' + tenis.marca + ".png")
+                        .ui.dividing.blue.header.marcas
+                            | #{tenis.marca}
+                        .meta
+                            | #{tenis.estilo}
+                        .description
+                            .ui.small.header Genero
+                            p #{tenis.genero}
+                            .ui.small.header Referencias
+                            p #{tenis.referencias.length}
+                            .ui.small.header Bodega
+                            p #{tenis.estante.bodega.ubicacion}
+
+                    .extra.content
+                        .ui.three.buttons
+                            a.ui.inverted.green.button(href="/tenis/details/"+ tenis.tenisID data-id=tenis.tenisID) Detalles
+                            a.ui.inverted.blue.button(href="#" data-id=tenis.tenisID) Editar
+                            a.ui.inverted.red.button(href="#" data-id=tenis.tenisID) Eliminar
+
+block temp-scripts
+    script(src="/js/referenciasScript.js")

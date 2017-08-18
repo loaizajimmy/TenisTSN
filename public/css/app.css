@@ -8,14 +8,14 @@ body {
     display: none;
 }
 
-#fotos-referencias img{
+#fotos-referencias img {
     width: 100%;
     flex-shrink: 0;
     min-width: 100%;
     min-height: 100%;
 }
 
-#fotos-referencias{
+#fotos-referencias {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -36,7 +36,6 @@ body {
     padding-left: .5em;
 }
 
-
 .no-background, .no-background .ui.segment {
     background: transparent;
     color: white;
@@ -54,3 +53,6 @@ body {
     padding-right: 2em;
 }
 
+.left-space {
+    padding-left: 2em;
+}

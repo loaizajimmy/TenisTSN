@@ -1,0 +1,133 @@
+extends ../shared/layout
+
+block content
+    .ui.center.aligned.stackeable.grid
+        .ten.wide.column
+            form(class='ui form segment form1', action='/tenis/', method='POST')
+                div(class='two fields')
+                    div(class='field')
+                        label Bodega
+                        div(class='ui selection dropdown')
+                            input(type='hidden', name='bodega')
+                            div(class='default text') Bodega
+                            i(class='dropdown icon')
+                            div(class='menu')
+                                div(class='item', data-value='1')
+                                    div(class='ui red empty circular label')
+                                    | Olimpica
+                                div(class='item', data-value='2')
+                                    div(class='ui teal empty circular label')
+                                    | Cra 19
+                                div(class='item', data-value='3')
+                                    div(class='ui black empty circular label')
+                                    | Cra 20
+                                div(class='item', data-value='4')
+                                    div(class='ui green empty circular label')
+                                    | Los Petetes
+
+
+                    div(class='field')
+                        label Estante
+                        div(class='ui selection dropdown')
+                            input(type='hidden', name='estante')
+                            div(class='default text') Estante
+                            i(class='dropdown icon')
+                            div(class='menu')
+                                div(class='item', data-value='1')
+                                    div(class='ui red empty circular label')
+                                    | Número 1
+                                div(class='item', data-value='2')
+                                    div(class='ui teal empty circular label')
+                                    | Número 2
+
+
+                div(class='three fields')
+                    div(class='field')
+                        label Estilo
+                        div(class='ui selection dropdown')
+                            input(type='hidden', name='estilo')
+                            div(class='default text') Estilo
+                            i(class='dropdown icon')
+                            div(class='menu')
+                                div(class='item', data-value='Zapatilla')
+                                    div(class='ui red empty circular label')
+                                    | Zapatilla
+                                div(class='item', data-value='Bota')
+                                    div(class='ui teal empty circular label')
+                                    | Bota
+
+
+                    div(class='field')
+                        label Genero
+                        div(class='ui selection dropdown')
+                            input(type='hidden', name='genero')
+                            div(class='default text') Genero
+                            i(class='dropdown icon')
+                            div(class='menu')
+                                div(class='item', data-value='femenino')
+                                    i(class='large pink female icon')
+                                    | Femenino
+                                div(class='item', data-value='masculino')
+                                    i(class='large blue male icon')
+                                    | Masuculino
+                                div(class='item', data-value='unisex')
+                                    i(class='large grey intergender icon')
+                                    | Unisex
+
+
+                    div(class='field')
+                        label Marca
+                        div(class='ui selection dropdown')
+                            input(type='hidden', name='marca')
+                            div(class='default text') Marca
+                            i(class='dropdown icon')
+                            div(class='scrolling menu')
+                                div(class='item', data-value='0')
+                                    div(class='ui red empty circular label')
+                                    | Reebok
+                                div(class='item', data-value='1')
+                                    div(class='ui teal empty circular label')
+                                    | Adidas
+                                div(class='item', data-value='2')
+                                    div(class='ui green empty circular label')
+                                    | Nike
+                                div(class='item', data-value='3')
+                                    div(class='ui blue empty circular label')
+                                    | Diesel
+                                div(class='item', data-value='4')
+                                    div(class='ui black empty circular label')
+                                    | Convers
+                                div(class='item', data-value='5')
+                                    div(class='ui purple empty circular label')
+                                    | Puma
+                                div(class='item', data-value='6')
+                                    div(class='ui yellow empty circular label')
+                                    | New Balance
+                                div(class='item', data-value='7')
+                                    div(class='ui pink empty circular label')
+                                    | Scketcher
+                                div(class='item', data-value='8')
+                                    div(class='ui orange empty circular label')
+                                    | Jordan
+
+
+
+                div(class='field')
+                    label Meses de garantia
+                    div(id='radios')
+                        input#option1(name='garantia', type='radio', value='1')
+                        label(for='option1')  1 mes
+                        input#option2(name='garantia', type='radio', value='2', checked='')
+                        label(for='option2') 2 meses
+                        input#option3(name='garantia', type='radio', value='3')
+                        label(for='option3') 3 meses
+
+
+
+                div(class='ui buttons')
+                    button(class='ui green submit button') Siguiente
+                    div(class='or')
+                    button(class='ui blue button') Defecto
+                    div(class='or')
+                    button(class='ui button') Cancel
+

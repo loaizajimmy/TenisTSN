@@ -1,9 +1,7 @@
 $(function () {
-    let valor = $('#marca');
-    let id = valor.text();
-    let marca = getMarca(id);
 
-    valor.html(marca);
+    putMarcas();
+
 
     $('.special.cards .image').dimmer({
         on: 'hover'
@@ -31,6 +29,14 @@ $(function () {
         });
     });
 });
+
+function putMarcas() {
+    $('.marcas').each(function (index, item) {
+        let id = item.innerHTML;
+        let marca = getMarca(id);
+        item.innerHTML = marca;
+    });
+}
 
 function getMarca(id) {
     switch (parseInt(id)) {

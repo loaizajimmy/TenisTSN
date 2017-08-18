@@ -1,0 +1,68 @@
+extends ../shared/layout
+
+block content
+    .ui.grid
+        .sixteen.wide.column
+            div(class='ui center aligned inverted segment')
+                h3(class="ui blue inverted header marcas") #{tenis.marca}
+            p= tenis.genero
+        .ui.divider
+
+    .ui.container
+        .ui.equal.width.left.aligned.padded.grid
+            .row
+                .sixteen.wide.column
+                    .ui.segments
+                        .ui.inverted.segment
+                            h5.ui.center.aligned.header
+                                | Referencias
+
+                        .ui.segment
+                            .ui.cards.four.stackable
+                                each referencia in tenis.referencias
+                                    .ui.card
+                                        .content
+                                            i.right.floated.like.icon
+                                            i.right.floated.star.icon
+                                            .header
+                                                a.ui.red.tag.label #{referencia.color}
+                                                h5= tenis.genero.toUpperCase()
+                                            .description
+                                                if(referencia.cantidad > 0)
+                                                    a.ui.teal.right.ribbon.label
+                                                        i.large.black.smile.icon
+                                                        |  #{referencia.cantidad}
+                                                else
+                                                    a.ui.black.right.ribbon.label
+                                                        i.large.white.frown.icon
+                                                        |  #{referencia.cantidad}
+
+                                                if (referencia.fotos.length > 0)
+                                                    -let foto = referencia.fotos[0].ruta;
+                                                    img.ui.circular.fluid.image(src=foto)
+                                                else
+                                                    img.ui.fluid.image(src='/img/default.png')
+                                        .extra.content
+                                            .ui.one.column.grid
+                                                .column
+                                                    .ui.two.column.grid
+                                                        .column
+                                                            span.like.animicon
+                                                                button.icobutton.icobutton--thumbs-up(data-url="/referencias/details/" + referencia.ReferenciaTenisID)
+                                                                    i.search.icon
+                                                                | Visualizar
+                                                        .column
+                                                            span.like.animicon
+                                                                button.icobutton.icobutton--thumbs-up(data-url="/referencias/update/" + referencia.ReferenciaTenisID)
+                                                                    i.edit.icon
+                                                                | Editar
+
+
+
+
+
+
+block temp-scripts
+    script(src="/plugins/Animocons/js/mo.min.js")
+    script(src="/js/animocons.js")
+    script(src="/js/referenciasScript.js")
