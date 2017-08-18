@@ -30,6 +30,29 @@ $(function () {
                 swal("Cancelado", "La referencia esta segura", "info");
         });
     });
+
+    $('.deleteFoto').click(function () {
+        const id = $(this).attr('data-id');
+        swal({
+            title: "¿Estas seguro de borrarlo?",
+            text: "No podras recuperar esta foto",
+            type: "error",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Si, bórralo",
+            cancelButtonText: "No, cancelar!",
+            closeOnConfirm: false,
+            closeOnCancel: false
+        }, function (a) {
+            if (a) {
+                borrarFoto(id);
+                swal("Borrado!", "la foto fue borrada", "success");
+            }
+            else
+                swal("Cancelado", "La foto esta segura", "info");
+        });
+
+    })
 });
 
 function getMarca(id) {
@@ -57,4 +80,12 @@ function getMarca(id) {
 
 function borrarReferencia() {
     $("#formBorrar").submit();
+}
+
+function borrarFoto(id) {
+
+    const url=`/referencias/delete/foto/${id}?_method=DELETE`;
+    let form = $("#formBorrarFoto");
+    form.attr("action", url);
+    form.submit();
 }

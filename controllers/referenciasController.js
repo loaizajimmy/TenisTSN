@@ -105,9 +105,21 @@ module.exports = {
                 console.log(err);
             res.redirect('/');
         });
-    }
-};
+    },
 
+    deleteFotoDELETE: function (req, res) {
+        let fotoID = req.params.fotoID;
+        request({
+            url: `${config.host}:${config.port}/api/fotos/${fotoID}`,
+            method: 'DELETE'
+        }, function (err, httpResponse, body) {
+            if (err)
+                console.log(err);
+            res.redirect(`/referencias/details/${req.fields.ReferenciaTenisID}`);
+        });
+    }
+
+};
 
 function uploadImages(req, res, id, tenisID) {
     let cont = 0;

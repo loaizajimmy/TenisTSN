@@ -67,7 +67,7 @@ block content
                             a(href='/referencias/update/' + referencia.ReferenciaTenisID class="rigth-space") Editar
                             a(href='#' id='btnEliminar' class="rigth-space" data-type="error") Eliminar
 
-                            form(id="formBorrar", action='/referencias/delete/'+ referencia.ReferenciaTenisID + "?_method=DELETE", method='POST')
+                            include delete
 
 
     .row
@@ -78,8 +78,9 @@ block content
                         .ui.dimmer
                             .content
                                 .center
-                                    .ui.red.inverted.button Eliminar
+                                    a.ui.red.inverted.button.deleteFoto(href="#" data-id=foto.fotoID) Eliminar
                         img(src="" + foto.ruta alt="" title="")
+        include ../fotos/delete
 
 
 

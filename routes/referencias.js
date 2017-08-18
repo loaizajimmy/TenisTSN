@@ -16,4 +16,6 @@ router.route('/update/:referenciaID')
 
 router.delete('/delete/:referenciaID', referenciasController.deleteDELETE);
 
+router.delete('/delete/foto/:fotoID', referenciasController.deleteFotoDELETE);
+
 module.exports = router;
